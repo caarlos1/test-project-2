@@ -1,5 +1,5 @@
 {
-  "name": "watch-store",
+  "name": "test-project-2",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -41,7 +41,7 @@
     "eslint-plugin-jest": "^27.0.4",
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-vue": "^9.5.1",
-    "jest": "^29.1.2",
+    "jest": "^29.3.1",
     "jest-environment-jsdom": "^29.1.2",
     "lint-staged": "^13.0.3",
     "postcss": "^8.4.20",
