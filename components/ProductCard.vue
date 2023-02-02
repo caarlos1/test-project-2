@@ -1,8 +1,20 @@
+<script>
+export default {
+  name: 'ProductCard',
+  props: {
+    product: {
+      type: Object,
+      required: true,
+    },
+  },
+}
+</script>
+
 <template>
   <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
     <div
       class="flex items-end justify-end h-56 w-full bg-cover"
-      :style="`background-image: url('https://images.unsplash.com/photo-1495856458515-0637185db551?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');`"
+      :style="`background-image: url('${product.image}');`"
     >
       <button
         class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
@@ -23,8 +35,8 @@
       </button>
     </div>
     <div class="px-5 py-3">
-      <h3 class="text-gray-700 uppercase">Classic watch</h3>
-      <span class="text-gray-500 mt-2">$123</span>
+      <h3 class="text-gray-700 uppercase">{{ product.title }}</h3>
+      <span class="text-gray-500 mt-2">${{ product.price }}</span>
     </div>
   </div>
 </template>
