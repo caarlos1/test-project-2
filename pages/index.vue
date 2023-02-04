@@ -1,5 +1,7 @@
 <template>
   <main class="my-8">
+    <the-search />
+
     <div v-if="!errorMessage" class="container mx-auto px-6">
       <h3 class="text-gray-700 text-2xl font-medium">Wrist Watch</h3>
       <span class="mt-3 text-sm text-gray-500">200+ Products</span>
@@ -13,27 +15,27 @@
         />
       </div>
     </div>
-    <h3 v-else class="text-center text-2xl">{{errorMessage}}</h3>
+    <h3 v-else class="text-center text-2xl">{{ errorMessage }}</h3>
   </main>
 </template>
 
 <script>
 import ProductCard from '@/components/ProductCard'
+import TheSearch from '@/components/TheSearch'
 
 export default {
-  components: { ProductCard },
+  components: { ProductCard, TheSearch },
   data() {
     return {
       products: [],
-      errorMessage: ''
+      errorMessage: '',
     }
   },
-  async created() {
+  async mounted() {
     try {
-      if (process.client)
         this.products = (await this.$axios.get('/api/products')).data.products
     } catch (err) {
-     this.errorMessage = 'Problemas ao carregar a lista!'
+      this.errorMessage = 'Problemas ao carregar a lista!'
     }
   },
 }
