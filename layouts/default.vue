@@ -33,6 +33,7 @@
           <div class="flex items-center justify-end w-full">
             <button
               class="text-gray-600 focus:outline-none mx-4 sm:mx-0"
+              data-testid="toggle-button"
               @click="toggleCart"
             >
               <svg
@@ -97,7 +98,7 @@
         </nav>
       </div>
     </header>
-    <the-cart :is-open="isCardOpen" @close="toggleCart" />
+    <the-cart :is-open="isCartOpen" :products="products" @close="toggleCart" />
     <nuxt />
     <footer class="bg-gray-200">
       <div
@@ -114,16 +115,21 @@
 
 <script>
 import TheCart from '@/components/TheCart'
+
 export default {
   components: { TheCart },
-  data() {
-    return {
-      isCardOpen: false,
-    }
+  computed: {
+    isCartOpen() {
+      return this.$cart.state.open
+    },
+    products() {
+      return this.$cart.state.items
+    },
   },
   methods: {
     toggleCart() {
-      this.isCardOpen = !this.isCardOpen
+      if (this.$cart.state.open) this.$cart.close()
+      else this.$cart.open()
     },
   },
 }

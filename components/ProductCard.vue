@@ -1,20 +1,3 @@
-<script>
-export default {
-  name: 'ProductCard',
-  props: {
-    product: {
-      type: Object,
-      required: true,
-    },
-  },
-  methods: {
-    addToCart() {
-      this.$emit('addToCart', { product: this.product })
-    },
-  },
-}
-</script>
-
 <template>
   <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
     <div
@@ -46,3 +29,23 @@ export default {
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'ProductCard',
+
+  props: {
+    product: {
+      type: Object,
+      required: true,
+    },
+  },
+
+  methods: {
+    addToCart() {
+      this.$cart.open()
+      this.$cart.addProduct(this.product)
+    },
+  },
+}
+</script>
