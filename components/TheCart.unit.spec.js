@@ -74,12 +74,18 @@ describe('TheCart - unit', () => {
     expect(button.exists()).toBe(true)
   })
 
-  fit('should call cart manager clearProducts() when button gets clicked', async () => {
+  it('should not display empty cart button when there are no products', () => {
+    const { wrapper } = mountCart()
+    const button = wrapper.find('[data-testid="clear-cart-button"]')
+    expect(button.exists()).toBe(false)
+  })
+
+  it('should call cart manager clearProducts() when button gets clicked', async () => {
     const { wrapper, cartManager } = mountCart(2)
 
     const spy = jest.spyOn(cartManager, 'clearProducts')
     await wrapper.find('[data-testid="clear-cart-button"]').trigger('click')
 
-    expect(spy).toHaveBeenCalledTimes(2)
+    expect(spy).toHaveBeenCalledTimes(1)
   })
 })

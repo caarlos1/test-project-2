@@ -1,4 +1,5 @@
 export default {
+  ssr: process.env.NODE_ENV === 'development' ? false : true,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'test-project-2',
